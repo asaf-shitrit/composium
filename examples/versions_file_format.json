@@ -1,0 +1,15 @@
+{
+    "test": [{
+        "hash": "00aadfdfe66448e2b7a4e4c024caa0df",
+        "version": "1.0.0",
+        "url": "http://localhost:8080/docker-compose-1.yml"
+    }, {
+        "hash": "98f0c85487567ed9f510bbc9b0af5ef4",
+        "version": "1.1.0",
+        "url": "http://localhost:8080/docker-compose-2.yml"
+    },{
+        "hash": "44d0c5f38a048d290fd35318be2bec98",
+        "version": "1.2.0",
+        "url": "http://localhost:8080/docker-compose-3.yml"
+    }]
+}

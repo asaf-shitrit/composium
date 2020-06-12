@@ -1,0 +1,9 @@
+coverage/
+build/
+node_modules/
+.env
+.vscode
+yarn-error.log
+package-lock.json
+bin/
+.DS_Store

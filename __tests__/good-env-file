@@ -1,0 +1,3 @@
+install-dir=/etc/cyolo-idac
+upstream=tcp.cyolo.io:443
+upstream-sni=tcp.cyolo.io

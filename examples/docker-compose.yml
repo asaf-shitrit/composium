@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  redis:
+    image: redis
+    environment:
+      - "COOLCOOL=12313213@#!@#!$!@5213adsa"
+    ports:
+      - "443:443"
+      - "80:80"

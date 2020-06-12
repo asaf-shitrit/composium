@@ -1,0 +1,25 @@
+# cyolo custom image, using docker inside docker
+FROM node:13-alpine as node-builder
+
+COPY package.json .
+
+COPY yarn.lock .
+
+RUN yarn install
+
+COPY . .
+
+RUN yarn build
+
+RUN yarn compile
+
+FROM tiangolo/docker-with-compose
+
+RUN apk add --no-cache bash
+
+COPY --from=node-builder /bin/index-alpine /composium
+
+RUN chmod +x /composium
+
+ENTRYPOINT [ "/composium" ]
+
