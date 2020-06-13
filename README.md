@@ -1,5 +1,7 @@
 # Composium 🛠
 
+![Tests](https://github.com/asaf-shitrit/composium/workflows/Tests/badge.svg)
+
 - [Composium 🛠](#composium-)
   - [Intro](#intro)
   - [Env Params](#env-params)

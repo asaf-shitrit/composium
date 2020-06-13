@@ -1,4 +1,4 @@
-name: Basic-CICD
+name: Tests
 
 on:
   push:
