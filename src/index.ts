@@ -1,6 +1,6 @@
 require("dotenv").config();
 import logger from "./logger";
-import main from './main';
+import main from "./main";
 
 try {
   logger.info("starting up composium");

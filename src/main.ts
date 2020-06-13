@@ -53,6 +53,7 @@ const run = () => {
         process.exit(
           newVersion ? config.exitCodes.newUpdate : config.exitCodes.noNewUpdate
         );
+        return;
       }
 
       // check if the no update override is defined
@@ -63,6 +64,10 @@ const run = () => {
 
       // check if the new version is not undefined
       if (newVersion === undefined) {
+        // if run once was specified explicity log that no update was foun
+        if (runOnce) {
+          logger.info("no update was found.");
+        }
         // if it is return early
         return;
       }
@@ -76,22 +81,25 @@ const run = () => {
     logger.verbose("got update event");
 
     setImmediate(async () => {
+      let previousState: FileState;
+
       try {
         // get the previous state before update for rollback feature
-        const previousState = await state.getCurrantFileState(filePath);
+        previousState = await state.getCurrantFileState(filePath);
 
         // perform the actual update
         await update.performUpdate(updateDesc);
-
-        // check if validation is provided
-        if (postUpdateValidationCommand) {
-          appEventEmitter.emit("validate", previousState);
-          return;
-        }
-        appEventEmitter.emit("update-done");
       } catch (error) {
         logger.error(error.message);
+        return;
       }
+
+      // check if validation is provided
+      if (postUpdateValidationCommand) {
+        appEventEmitter.emit("validate", previousState);
+        return;
+      }
+      appEventEmitter.emit("update-done");
     });
   });
 
@@ -121,6 +129,7 @@ const run = () => {
         await update.performRollback(filePath, previousFileState);
         logger.info("performed rollback successfully");
         process.exit(config.exitCodes.performedRollbackOnInvalidVersion);
+        return;
       } catch (error) {
         logger.crit(error.message);
       }
