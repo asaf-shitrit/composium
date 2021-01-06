@@ -32,7 +32,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "async-mutex": "^0.2.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "compare-versions": "^3.6.0",
     "dotenv": "^8.2.0",
     "fast-diff": "^1.2.0",
